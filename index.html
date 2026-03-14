@@ -91,11 +91,11 @@ class: inverse middle center
 ---
 # Complexity of this model
 
-The mortality rate due to other diseases (tpDn) is not constant
+The mortality rate due to other diseases (.red[tpDn]) is not constant
 
-- Depending on age
+- Depending on .red[age]
 
-The probability entering progressive disease (tpProg) state is not constant, which is a function of time (the cycle of the model): tpProg*(_stage+1)
+The probability entering progressive disease (tpProg) state is not constant, which is a function of time (the cycle of the model): .red[tpProg*(_stage+1)]
 
 ---
 class: middle center
@@ -125,7 +125,7 @@ background-position: 95% 10%
 
 .left-column[
 
-- The probability of moving from Asymptomatic disease to progressive disease could be expressed as tpProg*(_stage+1) 
+- The probability of moving from Asymptomatic disease to progressive disease could be expressed as .red[tpProg*(_stage+1)] 
 
 - We can specify it in the decision tree
 
@@ -141,18 +141,18 @@ background-position: 95% 80%
 &lt;image src="libs/pic/S7-F9p.png" width="60%"&gt;
 
 
-Create a table for variable tpDn with index of age
+Create a .red[table] for variable .red[tpDn] with index of .red[age]
 
 &lt;image src="libs/pic/S7-F10.png" width="50%"&gt;
 
-Specify the probability in the subtree in the form of TableName[index]
+Specify the probability in the subtree in the form of .red[TableName[index]]
 
 ---
 # Create a table to store variables 
 
 Tables allow you to enter a list of values that can be retrieved by an index
 
-  - TableName[index]
+  - .red[TableName[index]]
   
   - Retrieved by _stage(directly or indirectly) to use different table value for each cycle
 
@@ -198,9 +198,10 @@ class: inverse middle center
 
 ---
 # Methodological uncertainty
-- Economic evaluation consists of a range of techniques: measurement and valuation
 
-- There exist disagreement among practitioners about most appropriate analytical methods
+- Economic evaluation consists of a range of techniques: .red[measurement] and .red[valuation]
+
+- There exist .red[disagreement] among practitioners about most appropriate analytical methods
 
   - Discounting of costs and benefits
 	
@@ -209,9 +210,9 @@ class: inverse middle center
 ---
 # Research subjects and importance of the margin
 
-- Population characteristics and risk population (Margins)
+- .red[Population characteristics] and risk population (Margins)
 
-- Intervention intensity
+- Intervention .red[intensity]
 
 &lt;center width = "50%"&gt;
 
@@ -226,22 +227,22 @@ class: inverse middle center
 		
 - Data necessary to value those consequences
 		
-- The clinical trial provides opportunities to describe distributions of data for uncertainty analysis: (Second-order uncertainty; first-order uncertainty)		
+- The clinical trial provides opportunities to describe distributions of data for uncertainty analysis
 	
 ---
 #Type of sensativity analysis
 
 .pull-left[
 	
-- Deterministic (DSA): model input is specified as **multiple point esitmates** (sequentially) and varied manually
+- Deterministic (DSA): model input is specified as **multiple point estimates** (sequentially) and varied manually
 
 - One way sensitivity analysis
 
 - Scenario analysis
 
-	- Probabilistic (PSA): model inputs are specified as a distribution and varied
+- Probabilistic (PSA): model inputs are specified as a .red[distribution] and varied
 
-- Second order Monte Carlo simulation
+  - Second order Monte Carlo simulation
 
 ]
 
@@ -259,9 +260,9 @@ class: inverse middle center
 ---
 #General approch: Sensitivity analysis
 	
-- Change model input
+- .red[Change] model input
 
-- Recalculate ICER
+- .red[Recalculate ICER]
 
 - if new ICER is substantially different from old ICER, then model is sensitive to that parameter
 
@@ -296,15 +297,15 @@ class: inverse middle center
 
 #One way sensativity analysis: Definition
 
-- Vary one input(parameter) at a time, and see how model resutls are affected
+- Vary one input(parameter) at a time, and see how model results are affected
 	
 - Deterministic on tpProg
 
 - Base case: 0.01
 
-- Senativity analysis: Range from 0.005-0.015
+- Sensitivity analysis: Range from 0.005-0.015
 	
-	- Run 6 models, each with folliwing input: 0.005, 0.007, 0.009, 0.011, 0.013, 0.015
+	- Run 6 models, each with following input: 0.005, 0.007, 0.009, 0.011, 0.013, 0.015
 	
 ---
 
@@ -316,7 +317,7 @@ class: inverse middle center
 
 ---
 
-# One way sensativity analysis:demonstration 2
+# One way sensitivity analysis:demonstration 2
 
 &lt;center&gt;
 
@@ -330,19 +331,19 @@ class: inverse middle center
 	
 - Changes the point estimates of multiple parameters 
 
-- Change drug price + probability of transition from asympotomatic disease to progress desease
+- Change drug price + probability of transition from asymptomatic disease to progress disease
 
 	
 ---
 #First order Mento Carlo simulation: Definition
 	
-- Cohort simulation: Hypothetical cohort of participants transit through the model simultaneiously 
+- Cohort simulation: Hypothetical cohort of participants transit through the model simultaneously 
 		
-- Monte Carlos simulation (.red[first order]): .red[Randomly selected participants] transit throught the model individually
+- Monte Carlos simulation (.red[first order]): .red[Randomly selected participants] transit through the model individually
 
-- The first-order Mento Carlo simulation randomly selects a participant from the hypothetical cohort, who is followed through the model individually. 
+- The first-order Monte Carlo simulation randomly selects a participant from the hypothetical cohort, who is followed through the model individually. 
 
-- Individual participant can only be in one state at a given time they may or may not transit between states in any given cycle. The path follwed by different participants will differ due to chance. 
+- Individual participant can only be in one state at a given time they may or may not transit between states in any given cycle. The path followed by different participants will differ due to chance. 
 
 ---
 
@@ -386,9 +387,9 @@ class: inverse middle center
 	
 ---
 
-#Chossing distribution for second order Mento Carlo simulation
+#Chosing distribution for second order Mento Carlo simulation
 	
-- Costs: log-normal, normal, gammar
+- Costs: log-normal, normal, gamma
 		
 - Probabilities: beta
 		
@@ -398,9 +399,9 @@ class: inverse middle center
 
 #Creating distribution-based definitions
 	
-- Create the distribution: Discdeath
+- .red[Create] the distribution: Discdeath
 
-- Define the distribution in terms of its shape
+- .red[Define] the distribution in terms of its shape
 	
 	- Normal, beta, etc
 	
@@ -432,7 +433,7 @@ class: inverse middle center
 
 #Second order Mento Carlo simulation: Demonstration
 	
-- Define distributions: 
+- .red[Define] distributions: 
 
 - Discdeath (normal distribution with mean of 1000 and standard deviation of 100)
 
@@ -440,9 +441,9 @@ class: inverse middle center
  
 	- Define variables as distributions: 
 
-- Cdeath = Discdeath
+- cdeath = Discdeath
 
-- uProg=Disuprog
+- uProg = Disuprog
 
 	- Determine your number of iteratures
 	
@@ -479,9 +480,9 @@ class: inverse middle center
 ---
 #Presenting uncertainty in the ICER
 
-- Cost-effectiveness scatterplot
+- Cost-effectiveness .red[scatter plot]
 		
-- Cost-effectiveness acceptabliity curve
+- Cost-effectiveness .red[acceptability curve]
 
 - Net benefits
 	
@@ -494,7 +495,7 @@ class: inverse middle center
 
 ---
 
-#Cost-effectiveness acceptability curves
+#Cost-effectiveness acceptability curves (CEAC)
 
 Acceptability curves are derived from the joint distribution of incremental costs and incremental effects 
 	
