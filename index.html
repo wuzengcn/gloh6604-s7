@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Session 7: Markov model (continue) and sensitivity analysis</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Wu Zeng, MD, PHD" />
+    <script src="libs/header-attrs-2.30/header-attrs.js"></script>
+    <link rel="stylesheet" href="libs/css/zuwm.css" type="text/css" />
+    <link rel="stylesheet" href="libs/css/zuwm-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+class: title-slide, center, middle
+
+# Session 7: Markov model (continue) and sensitivity analysis
+## &lt;br/&gt;
+### Wu Zeng, MD, PHD
+### Georgetown University
+### 2026/3/14
+---
+# Outline 
+
+- Markov Model with time dependent transition probability
+
+- Sensitivity analysis
+
+  - What is sensitivity analysis 
+  
+  - Why is sensitivity analysis is needed 
+  
+  - Type of sensitivity analysis 
+  
+      - Static
+    
+      - Stochastic 
+    
+  - How to conduct a sensitivity analysis
+
+---
+class: inverse middle center 
+
+# An Introduction to Markov Modelling for Economic Evaluation
+
+### Andrew Briggs
+
+### Mark Sculpher
+
+---
+# Define states 
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F1.png" width="40%"&gt;
+
+---
+# Transition matrix (problems?)
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F2.png" width="80%"&gt;
+
+---
+# Sample: Transition probabilities for status quo before the first cycle
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F3.png" width="75%"&gt;
+
+---
+# Transition probabilities for intervention group before the first cycle
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F4.png" width="75%"&gt;
+
+---
+# Variables used in the model
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F5.png" width="70%"&gt;
+
+---
+# Results 
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F6.png" width="70%"&gt;
+
+---
+# Complexity of this model
+
+The mortality rate due to other diseases (tpDn) is not constant
+
+- Depending on age
+
+The probability entering progressive disease (tpProg) state is not constant, which is a function of time (the cycle of the model): tpProg*(_stage+1)
+
+---
+class: middle center
+
+# Let first start with simple model: No complexity
+
+---
+# Define variables
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F7.png" width="70%"&gt;
+
+---
+# Markov model
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F8.png" width="75%"&gt;
+
+---
+background-image: url("libs/pic/S7-F9.png")
+background-size: 60%
+background-position: 95% 10%
+
+# How to deal with tpProg
+
+.left-column[
+
+- The probability of moving from Asymptomatic disease to progressive disease could be expressed as tpProg*(_stage+1) 
+
+- We can specify it in the decision tree
+
+]
+
+---
+background-image: url("libs/pic/S7-F11.png")
+background-size: 40%
+background-position: 95% 80%
+
+# Howabout death rate tpDn
+
+&lt;image src="libs/pic/S7-F9p.png" width="60%"&gt;
+
+
+Create a table for variable tpDn with index of age
+
+&lt;image src="libs/pic/S7-F10.png" width="50%"&gt;
+
+Specify the probability in the subtree in the form of TableName[index]
+
+---
+# Create a table to store variables 
+
+Tables allow you to enter a list of values that can be retrieved by an index
+
+  - TableName[index]
+  
+  - Retrieved by _stage(directly or indirectly) to use different table value for each cycle
+
+.red[Table data]
+
+  - Organized by rows &amp; columns
+  
+  - Index column is required
+  
+  - Multiple value columns allowed
+  
+  - Retrieved with the format of TableName[.red[index];.red[ValueColumn]]
+
+---
+# CEA of the sample 
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F12.png" width="65%"&gt;
+
+---
+# CEA report
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S7-F13.png" width="100%"&gt;
+
+&lt;image src="libs/pic/S7-F6.png" width="60%"&gt;
+
+---
+class: inverse middle center
+
+# Why conduct sensativity analysis
+
+---
+#Uncertainty
+
+- Methodological uncertainty (i.e discount rate)
+
+- Research subjects' characteristics (i.e. incidence of malaria)
+
+- Parameters that could be sampled (i.e. probabilities, costs, effectiveness)
+
+---
+# Methodological uncertainty
+- Economic evaluation consists of a range of techniques: measurement and valuation
+
+- There exist disagreement among practitioners about most appropriate analytical methods
+
+  - Discounting of costs and benefits
+	
+	- Value resources and health outcomes (financial costs vs. Economic costs; Boundary of health outcomes)
+	
+---
+# Research subjects and importance of the margin
+
+- Population characteristics and risk population (Margins)
+
+- Intervention intensity
+
+&lt;center width = "50%"&gt;
+
+&lt;image src="libs/pic/S6-Fig1.png" width="70%"&gt;
+
+---
+#Parameters that could be sampled
+	
+- Probabilities
+		
+- Resource use consequences and health outcome consequences
+		
+- Data necessary to value those consequences
+		
+- The clinical trial provides opportunities to describe distributions of data for uncertainty analysis: (Second-order uncertainty; first-order uncertainty)		
+	
+---
+#Type of sensativity analysis
+	
+- Deterministic (DSA): model input is specified as **multiple point esitmates** (sequentially) and varied manually
+
+- One way sensativity analysis
+
+- Scenario analysis
+
+	- Probabilistic (PSA): model inputs are specified as a distribution and varied
+
+- Second order Mento Carlo simulation
+
+&lt;center width = "50%"&gt;
+
+&lt;image src="libs/pic/s6-Fig1-1.png" width="50%" width = "50%"&gt;
+
+---
+
+# How to model uncertainty
+
+---
+#General approch: Sentativity analysis
+	
+- Change model input
+
+- Recalculate ICER
+
+- if new ICER is substantially different from odl ICER, then model is senative to that parameter
+
+- It is important to be accurate about this parameter
+
+---
+
+# An illustrative model
+
+&lt;center width = "50%"&gt; 
+
+&lt;image src="libs/pic/S6-Fig3-2.png" width="40%" width = "50%"&gt;
+	
+
+---
+
+# Parameters for the model
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S6-Fig3-3.png" width = "70%"&gt;
+
+---
+
+#One way sensativity analysis
+
+&lt;center&gt; 
+
+&lt;image src="libs/pic/S6-Fig3-4.png" width = "50%"&gt;
+
+---
+
+#One way sensativity analysis: Definition
+
+- Vary one input(parameter) at a time, and see how model resutls are affected
+	
+- Deterministic on tpProg
+
+- Base case: 0.01
+
+- Senativity analysis: Range from 0.005-0.015
+	
+	- Run 6 models, each with folliwing input: 0.005, 0.007, 0.009, 0.011, 0.013, 0.015
+	
+---
+
+# One way sensativity analysis:demonstration 1
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-4-1.png" width = "70%"&gt;
+
+---
+
+# One way sensativity analysis:demonstration 2
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-4-2.png" width = "50%"&gt; 
+
+&lt;image src="libs/pic/S6-Fig3-4-3.png" width = "50%"&gt;
+
+---
+
+#Scenario analysis:Definition
+	
+- Changes the point estimates of multiple parameters 
+
+- Change drug price + probability of transition from asympotomatic disease to progress desease
+
+	
+---
+#First order Mento Carlo simulation: Definition
+	
+- Cohort simulation: Hypothetical cohort of participants transit through the model simultaneiously 
+		
+- Monte Carlos simulation (.red[first order]): .red[Randomly selected participants] transit throught the model individually
+
+- The first-order Mento Carlo simulation randomly selects a participant from the hypothetical cohort, who is followed through the model individually. 
+
+- Individual participant can only be in one state at a given time they may or may not transit between states in any given cycle. The path follwed by different participants will differ due to chance. 
+
+---
+
+#First order Mento Carlo simulation
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-5.png" width = "70%"&gt;
+
+---
+
+#First order Mento Carlo simulation:demonstration
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-5-1.png" width = "80%"&gt;
+
+---
+
+#First order Mento Carlo simulation: the choice of sample size
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-6.png" width = "80%"&gt;
+
+---
+
+# Second order Mento Carlo simulation: Definition
+	
+- Vary multiple .red[parameters] simultaneously
+		
+- Each variable comes from a .red[distribution]
+		
+- Model runs many times (1,000, 10,000, etc.)
+
+- Each model iteration plucks a value from that distribution and uses it as the model input
+		
+	- Values are sampled with .red[replacement]
+		
+	- Values sampled based on their likelihood of occurrence
+	
+---
+
+#Chossing distribution for second order Mento Carlo simulation
+	
+- Costs: log-normal, normal, gammar
+		
+- Probabilities: beta
+		
+- Utilities: beta
+	
+---
+
+#Creating distribution-based definitions
+	
+- Create the distribution: Discdeath
+
+- Define the distribution in terms of its shape
+	
+	- Normal, beta, etc
+	
+- Define the parameters for that distribution
+	
+	- Mean/variance, alpha/beta, etc
+	
+		- Assign the distribution to a variable
+
+- Cdeath = Discdeath
+
+---
+
+#Second order Mento Carlo simulation
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-7.png" width = "80%"&gt;
+
+---
+
+#Second order Mento Carlo simulation
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-8.png" width = "80%"&gt;
+
+---
+
+#Second order Mento Carlo simulation: Demonstration
+	
+- Define distributions: 
+
+- Discdeath (normal distribution with mean of 1000 and standard deviation of 100)
+
+- Disuprog (normal distribution with mean of 0.75 and standard deviation of 0.05)
+ 
+	- Define variables as distributions: 
+
+- Cdeath = Discdeath
+
+- uProg=Disuprog
+
+	- Determine your number of iteratures
+	
+---
+
+#Select analysis approach
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-8-1.png" width = "80%"&gt;	
+
+---
+
+#Select number of iteration
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-8-2.png" width = "50%"&gt;	
+
+---
+
+# Simulation resutls
+
+&lt;center&gt;
+.pull-left[
+&lt;image src="libs/pic/S6-Fig3-8-3.png" width = "100%"&gt;
+]
+
+.pull-right[
+&lt;image src="libs/pic/S6-Fig3-8-4.png" width = "100%"&gt;
+]
+
+
+---
+#Presenting uncertainty in the ICER
+
+- Cost-effectiveness scatterplot
+		
+- Cost-effectiveness acceptabliity curve
+
+- Net benefits
+	
+---
+#Cost-effectiveness scatter plot
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-8-5.png" width = "70%"&gt;	
+
+---
+
+#Cost-effectiveness acceptability curves
+
+Acceptability curves are derived from the joint distribution of incremental costs and incremental effects 
+	
+The information from a CEAC should not, in general, be used to make statements about the implementation of the intervention.
+
+&lt;center&gt;
+	
+&lt;image src="libs/pic/S6-Fig3-9.png" width = "60%"&gt;
+
+---
+
+# Cost-effectiveness presentation
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-10.jpg" width="70%"&gt;
+
+
+---
+
+#Cost-effectiveness acceptability curves
+
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-11.png" width = "80%"&gt;
+
+
+---
+
+#CE scatter plots
+
+&lt;center&gt;
+
+.pull-left[
+&lt;image src="libs/pic/S6-Fig3-8-7.png" width = "100%"&gt;	
+]
+
+.pull-right[
+&lt;image src="libs/pic/S6-Fig3-8-5.png" width = "100%"&gt;		
+]
+---
+
+#CE acceptability curve
+	
+&lt;center&gt;
+
+&lt;image src="libs/pic/S6-Fig3-8-6.png" width = "80%"&gt;	
+
+---
+class: center middle
+
+.Large[# Thank you!]
+
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg> : [wz192@georgetown.edu](mailto:wz192@georgetown.edu)
+
+<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> : [@wuzengcn](@wuzengcn)
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
